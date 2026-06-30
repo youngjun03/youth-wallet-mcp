@@ -1,0 +1,15 @@
+[project]
+name = "ontong-youth-policy-mcp"
+version = "0.1.0"
+description = "MCP server for finding Korean youth policies using OntongYouth API."
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp",
+    "pydantic",
+    "pydantic-settings",
+    "httpx",
+    "python-dotenv"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
