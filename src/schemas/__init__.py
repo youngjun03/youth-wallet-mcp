@@ -1,0 +1,1 @@
+﻿"""Serializable domain schemas."""
