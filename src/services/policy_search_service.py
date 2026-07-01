@@ -112,6 +112,8 @@ class PolicyAPIService:
         lclsfNm      -> category_major
         mclsfNm      -> category_middle
         plcySprtCn   -> support_content
+        bizPrdBgngYmd -> start_date
+        bizPrdEndYmd  -> end_date
         """
 
         return {
@@ -122,6 +124,8 @@ class PolicyAPIService:
             "category_major": policy.get("lclsfNm"),
             "category_middle": policy.get("mclsfNm"),
             "support_content": policy.get("plcySprtCn"),
+            "start_date": policy.get("bizPrdBgngYmd"),
+            "end_date": policy.get("bizPrdEndYmd"),
         }
     
     def search_youth_policies(
