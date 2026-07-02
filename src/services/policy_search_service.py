@@ -4,6 +4,7 @@
 
 import httpx
 from config import settings
+from services.region_code_service import RegionCodeService
 
 class PolicyAPIService:
     """
@@ -133,7 +134,7 @@ class PolicyAPIService:
         keyword: str | None = None,
         policy_name: str | None = None,
         description_keyword: str | None = None,
-        region_code: str | None = None,
+        region_name: str | None = None,
         category_major: str | None = None,
         category_middle: str | None = None,
         page: int = 1,
@@ -146,7 +147,7 @@ class PolicyAPIService:
             keyword: 정책 키워드명
             policy_name: 정책명
             description_keyword: 정책 설명 검색어
-            region_code: 법정시군구코드
+            region_name: 사용자 거주 지역명                 
             category_major: 정책 대분류명
             category_middle: 정책 중분류명
             page: 페이지 번호
@@ -155,6 +156,13 @@ class PolicyAPIService:
         Returns:
             MCP tool에서 반환하기 좋은 형태의 dict
         """
+
+        # region_name을 region_code로 변환
+        region_code = None
+        
+        if region_name:
+            region_service = RegionCodeService()
+            region_code = region_service.find_region_code(region_name)
 
         # 최종 API URL 구성
         url = f"{self.base_url}{self.end_point}"
